@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+aday.db
+.streamlit/secrets.toml
+.DS_Store
