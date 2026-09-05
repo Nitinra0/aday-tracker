@@ -1,8 +1,7 @@
 import streamlit as st
-import pandas as pd
 from utils.db import init_db
 from utils.ui import apply_page_config, inject_css, render_sidebar_logo, page_header
-from utils.data import EVENT_NAME, SCHEDULE, BUDGET
+from utils.data import EVENT_NAME, SCHEDULE
 
 apply_page_config(f"Schedule · {EVENT_NAME}")
 inject_css()
@@ -19,9 +18,3 @@ for time_, title, desc in SCHEDULE:
         st.markdown(f"**{title}**")
         st.caption(desc)
     st.divider()
-
-st.subheader("Budget snapshot")
-df = pd.DataFrame(BUDGET, columns=["Category", "Covers", "Amount (₹)"])
-total = df["Amount (₹)"].sum()
-st.dataframe(df, width='stretch', hide_index=True)
-st.metric("Estimated total", f"₹{total:,.0f}")
